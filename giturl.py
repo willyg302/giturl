@@ -37,6 +37,18 @@ URL_DICT = {
 			'https': 'https://{owner}@{host}/{owner}/{repo}.git',
 			'ssh': 'git@{host}:{owner}/{repo}.git'
 		}
+	},
+	'assembla': {
+		'matches': [
+			'git://git.assembla.com/(?P<repo>.+)\.git',
+			'git@git.assembla.com:(?P<repo>.+)\.git',
+			'as:(?P<repo>.+)'
+		],
+		'host': 'git.assembla.com',
+		'formatters': {
+			'git': 'git://{host}/{repo}.git',
+			'ssh': 'git@{host}:{repo}.git'
+		}
 	}
 }
 
@@ -56,32 +68,34 @@ class GitURL(object):
 				self._valid = True
 				self._type = type
 				self._host = d['host']
-				self._owner = match['owner']
-				self._repo = match['repo']
+				self._owner = match.get('owner')
+				self._repo = match.get('repo')
 				break;
 		else:
 			self._valid = False
 
 	@property
 	def host(self):
-		return self._host
+		return getattr(self, '_host', None)
 
 	@property
 	def owner(self):
-		return self._owner
+		return getattr(self, '_owner', None)
 
 	@property
 	def repo(self):
-		return self._repo
+		return getattr(self, '_repo', None)
 
 	@property
 	def valid(self):
 		return self._valid
 
 	def is_a(self, type):
-		return self._type == type
+		return getattr(self, '_type', None) == type
 
 	def to(self, protocol):
+		if not self.valid:
+			raise ValueError('Unable to format invalid URL to {}'.format(protocol))
 		formatters = URL_DICT[self._type]['formatters']
 		if protocol in formatters:
 			return formatters[protocol].format(**{

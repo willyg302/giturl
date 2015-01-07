@@ -1,6 +1,12 @@
 # giturl
 
+[![license](http://img.shields.io/badge/license-MIT-red.svg?style=flat-square)](https://raw.githubusercontent.com/willyg302/giturl/master/LICENSE)
+
 A tool for parsing all sorts of Git URLs
+
+## Installing
+
+giturl is just a `pip install git+https://github.com/willyg302/giturl.git@master` away.
 
 ## Usage
 
@@ -31,3 +37,8 @@ giturl is capable of parsing short versions of common Git URLs:
 
 - **GitHub**: `gh:owner/repo`
 - **Bitbucket**: `bb:owner/repo`
+- **Assembla**: `as:repo`
+
+## Testing
+
+Call tests with `python test.py` or `python setup.py test`.
