@@ -1,12 +1,13 @@
 # giturl
 
+[![Travis](https://img.shields.io/travis/willyg302/giturl.svg?style=flat-square)](https://travis-ci.org/willyg302/giturl)
 [![license](http://img.shields.io/badge/license-MIT-red.svg?style=flat-square)](https://raw.githubusercontent.com/willyg302/giturl/master/LICENSE)
 
 A tool for parsing all sorts of Git URLs
 
 ## Installing
 
-giturl is just a `pip install git+https://github.com/willyg302/giturl.git@master` away.
+giturl is just a `pip install giturl.py` away.
 
 ## Usage
 

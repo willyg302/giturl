@@ -3,12 +3,19 @@ giturl: A tool for parsing all sorts of Git URLs
 Repo: https://github.com/willyg302/giturl
 '''
 import re
+import sys
 
 
 __version__ = '0.1.0'
 VERSION = tuple(map(int, __version__.split('.')))
 
 __all__ = ['GitURL']
+
+
+PY2 = sys.version_info[0] == 2
+
+def iteritems(d):
+	return d.iteritems() if PY2 else d.items()
 
 
 URL_DICT = {
@@ -62,7 +69,7 @@ def matches(s, regexes):
 class GitURL(object):
 
 	def __init__(self, url):
-		for type, d in URL_DICT.iteritems():
+		for type, d in iteritems(URL_DICT):
 			match = matches(url, d['matches'])
 			if match:
 				self._valid = True
