@@ -39,6 +39,7 @@ giturl is capable of parsing short versions of common Git URLs:
 - **GitHub**: `gh:owner/repo`
 - **Bitbucket**: `bb:owner/repo`
 - **Assembla**: `as:repo`
+- **GitHub Gists**: `gist:owner/repo`
 
 ## Testing
 

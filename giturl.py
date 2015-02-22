@@ -6,7 +6,7 @@ import re
 import sys
 
 
-__version__ = '0.1.0'
+__version__ = '0.2.0'
 VERSION = tuple(map(int, __version__.split('.')))
 
 __all__ = ['GitURL']
@@ -55,6 +55,16 @@ URL_DICT = {
 		'formatters': {
 			'git': 'git://{host}/{repo}.git',
 			'ssh': 'git@{host}:{repo}.git'
+		}
+	},
+	'gist': {
+		'matches': [
+			'https://gist.github.com/(?P<owner>.+)/(?P<repo>.+)',
+			'gist:(?P<owner>.+)/(?P<repo>.+)'
+		],
+		'host': 'gist.github.com',
+		'formatters': {
+			'https': 'https://{host}/{owner}/{repo}'
 		}
 	}
 }

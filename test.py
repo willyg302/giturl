@@ -52,6 +52,21 @@ VALID_URLS = [
 			('git', 'git://git.assembla.com/repo.git'),
 			('http', None)
 		]
+	},
+	{
+		'urls': [
+			'https://gist.github.com/owner/repo',
+			'gist:owner/repo'
+		],
+		'host': 'gist.github.com',
+		'type': 'gist',
+		'owner': 'owner',
+		'rewrites': [
+			('ssh', None),
+			('https', 'https://gist.github.com/owner/repo'),
+			('git', None),
+			('http', None)
+		]
 	}
 ]
 
