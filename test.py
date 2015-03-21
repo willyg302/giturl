@@ -9,6 +9,9 @@ VALID_URLS = [
 			'git://github.com/owner/repo.git',
 			'https://github.com/owner/repo.git',
 			'git@github.com:owner/repo.git',
+			'git://github.com/owner/repo',
+			'https://github.com/owner/repo',
+			'git@github.com:owner/repo',
 			'gh:owner/repo'
 		],
 		'host': 'github.com',
@@ -16,7 +19,7 @@ VALID_URLS = [
 		'owner': 'owner',
 		'rewrites': [
 			('ssh', 'git@github.com:owner/repo.git'),
-			('https', 'https://github.com/owner/repo.git'),
+			('https', 'https://github.com/owner/repo'),
 			('git', 'git://github.com/owner/repo.git'),
 			('http', None)
 		]
@@ -25,6 +28,8 @@ VALID_URLS = [
 		'urls': [
 			'https://owner@bitbucket.org/owner/repo.git',
 			'git@bitbucket.org:owner/repo.git',
+			'https://owner@bitbucket.org/owner/repo',
+			'git@bitbucket.org:owner/repo',
 			'bb:owner/repo'
 		],
 		'host': 'bitbucket.org',
@@ -32,7 +37,7 @@ VALID_URLS = [
 		'owner': 'owner',
 		'rewrites': [
 			('ssh', 'git@bitbucket.org:owner/repo.git'),
-			('https', 'https://owner@bitbucket.org/owner/repo.git'),
+			('https', 'https://owner@bitbucket.org/owner/repo'),
 			('git', None),
 			('http', None)
 		]
@@ -41,6 +46,8 @@ VALID_URLS = [
 		'urls': [
 			'git://git.assembla.com/repo.git',
 			'git@git.assembla.com:repo.git',
+			'git://git.assembla.com/repo',
+			'git@git.assembla.com:repo',
 			'as:repo'
 		],
 		'host': 'git.assembla.com',
@@ -73,10 +80,12 @@ VALID_URLS = [
 INVALID_URLS = [
 	'git@github.com:owner',
 	'get@github.com:owner/repo.git',
+	'git@github.com:owner/repo.get',
 	'https://owner@bitbucket.org/notowner/repo.git',
 	'git://bitbucket.org/owner.repo.git',
 	'git@assembla.com:repo.git',
-	'https://git.assembla.com/repo.git'
+	'https://git.assembla.com/repo.git',
+	'https://gist.github.com/owner/repo.git'
 ]
 
 

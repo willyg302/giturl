@@ -6,7 +6,7 @@ import re
 import sys
 
 
-__version__ = '0.2.0'
+__version__ = '0.2.1'
 VERSION = tuple(map(int, __version__.split('.')))
 
 __all__ = ['GitURL']
@@ -21,34 +21,34 @@ def iteritems(d):
 URL_DICT = {
 	'github': {
 		'matches': [
-			'git://github.com/(?P<owner>.+)/(?P<repo>.+)\.git',
-			'https://github.com/(?P<owner>.+)/(?P<repo>.+)\.git',
-			'git@github.com:(?P<owner>.+)/(?P<repo>.+)\.git',
+			'git://github.com/(?P<owner>.+)/(?P<repo>[^\.]+?)(?:$|\.git)',
+			'https://github.com/(?P<owner>.+)/(?P<repo>[^\.]+?)(?:$|\.git)',
+			'git@github.com:(?P<owner>.+)/(?P<repo>[^\.]+?)(?:$|\.git)',
 			'gh:(?P<owner>.+)/(?P<repo>.+)'
 		],
 		'host': 'github.com',
 		'formatters': {
 			'git': 'git://{host}/{owner}/{repo}.git',
-			'https': 'https://{host}/{owner}/{repo}.git',
+			'https': 'https://{host}/{owner}/{repo}',
 			'ssh': 'git@{host}:{owner}/{repo}.git'
 		}
 	},
 	'bitbucket': {
 		'matches': [
-			'https://(?P<owner>.+)@bitbucket.org/(?P=owner)/(?P<repo>.+)\.git',
-			'git@bitbucket.org:(?P<owner>.+)/(?P<repo>.+)\.git',
+			'https://(?P<owner>.+)@bitbucket.org/(?P=owner)/(?P<repo>[^\.]+?)(?:$|\.git)',
+			'git@bitbucket.org:(?P<owner>.+)/(?P<repo>[^\.]+?)(?:$|\.git)',
 			'bb:(?P<owner>.+)/(?P<repo>.+)'
 		],
 		'host': 'bitbucket.org',
 		'formatters': {
-			'https': 'https://{owner}@{host}/{owner}/{repo}.git',
+			'https': 'https://{owner}@{host}/{owner}/{repo}',
 			'ssh': 'git@{host}:{owner}/{repo}.git'
 		}
 	},
 	'assembla': {
 		'matches': [
-			'git://git.assembla.com/(?P<repo>.+)\.git',
-			'git@git.assembla.com:(?P<repo>.+)\.git',
+			'git://git.assembla.com/(?P<repo>[^\.]+?)(?:$|\.git)',
+			'git@git.assembla.com:(?P<repo>[^\.]+?)(?:$|\.git)',
 			'as:(?P<repo>.+)'
 		],
 		'host': 'git.assembla.com',
@@ -59,7 +59,7 @@ URL_DICT = {
 	},
 	'gist': {
 		'matches': [
-			'https://gist.github.com/(?P<owner>.+)/(?P<repo>.+)',
+			'https://gist.github.com/(?P<owner>.+)/(?P<repo>[^\.]+)(?:$)',
 			'gist:(?P<owner>.+)/(?P<repo>.+)'
 		],
 		'host': 'gist.github.com',
