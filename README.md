@@ -23,7 +23,7 @@ print g.owner     # prints "willyg302"
 print g.repo      # prints "giturl"
 
 g.to_ssh()        # returns 'git@github.com:willyg302/giturl.git'
-g.to_https()      # returns 'https://github.com/willyg302/giturl.git'
+g.to_https()      # returns 'https://github.com/willyg302/giturl'
 g.to_git()        # returns 'git://github.com/willyg302/giturl.git'
 g.to_http()       # returns None
 g.to('ssh')       # same as g.to_ssh()
